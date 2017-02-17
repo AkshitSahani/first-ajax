@@ -25,7 +25,20 @@
 
     <section id="step8">
       <h2>Step 8</h2>
-      <button class="four"> Run AJAX Request to Time</button>
+      <form>
+        What timezone would you like to know? <br>
+        <input type="text" name="input" class="userinput">
+        <input type="submit" class="submitted">
+      </form>
+      <!--
+
+      **You can add a button in the form. But its default behaviour is post then get again
+      so you dont see anything. If you want to click on this submit button, you have to enable
+      the preventDefault() function. Otherwise you can make any button outside a form and link
+      the jQuery to that button.**
+      
+      <button class="butt"> Submit </button><br> -->
+      <button class="four"> Run AJAX Request to Time</button><br><br>
     </section>
 
     <section id="step9">
@@ -34,6 +47,9 @@
       <ul id="cars">
       </ul>
     </section>
+
+
+
 
   </body>
 </html>

@@ -10,16 +10,16 @@ $(document).ready(function () {
 
   $('.two').on('click', function(){
     $.ajax({
-      url: 'http://first-ajax-api.herokuapp.com/ping',
+      url: 'http://first-ajax-api.herokuapp.com/pong',
       data: {},
       method: 'GET',
       dataType: 'text'
     }).done(function(data){
       console.log(data);
       $('#step3456').append(data);
-    }).fail(function(){
+    }).fail(function(jqXHR, textStatus, errorThrown){
       console.log('response failed!');
-      $('#step3456').append('Sorry, you are at the wrong place.');
+      $('#step3456').append(jqXHR.responseText);
     }).always(function(){
       console.log('Hey the request finished!');
     })
@@ -42,10 +42,10 @@ $(document).ready(function () {
     })
   });
 
-  $('.four').on('click', function(){
+  $('.submitted').on('click', function(eventObject){
     $.ajax({
       url: 'http://first-ajax-api.herokuapp.com/time',
-      data: {timezone: 'Pacific/Honolulu'},
+      data: {timezone: $('.userinput').val()},
       method: 'GET',
       dataType: 'text'
     }).done(function(data){
@@ -53,10 +53,11 @@ $(document).ready(function () {
       $('#step8').append(data);
     }).fail(function(){
       console.log('response failed!');
-      $('#step8').append('Sorry, you are at the wrong place.');
+      $('#step8').append('Sorry, that is not a valid timezone.');
     }).always(function(){
       console.log('Hey the request finished!');
     })
+    eventObject.preventDefault();
   });
 
   $('.five').on('click', function(){
